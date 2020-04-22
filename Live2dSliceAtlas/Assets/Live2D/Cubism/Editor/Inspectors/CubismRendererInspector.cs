@@ -46,7 +46,8 @@ namespace Live2D.Cubism.Editor.Inspectors
             renderer.Material = EditorGUILayout.ObjectField("Material", renderer.Material, typeof(Material), true) as Material;
             renderer.MainTexture = EditorGUILayout.ObjectField("Main Texture", renderer.MainTexture, typeof(Texture2D), true) as Texture2D;
             renderer.LocalSortingOrder = EditorGUILayout.IntField("Local Order", renderer.LocalSortingOrder);
-
+            //by gcy 重新生成mesh
+            renderer.isReGenerateMesh = EditorGUILayout.Toggle("Is ReGenerateMesh", renderer.isReGenerateMesh);
 
             // Save any changes.
             if (EditorGUI.EndChangeCheck())

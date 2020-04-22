@@ -25,6 +25,10 @@ namespace Live2D.Cubism.Rendering
     public sealed class CubismRenderer : MonoBehaviour
     {
         /// <summary>
+        /// 是否重新生成mesh，用单张图片的
+        /// </summary>
+        public bool isReGenerateMesh;
+        /// <summary>
         /// <see cref="LocalSortingOrder"/> backing field.
         /// </summary>
         [SerializeField, HideInInspector]
@@ -757,8 +761,15 @@ namespace Live2D.Cubism.Rendering
         {
             TryInitializeMeshRenderer();
             TryInitializeMeshFilter();
-
-            TryInitializeMesh();
+            //by gcy
+            if (isReGenerateMesh)
+            {
+                ReGenerateMesh();
+            }
+            else
+            {
+                TryInitializeMesh();
+            }
             TryInitializeVertexColor();
             TryInitializeMainTexture();
 
@@ -779,8 +790,61 @@ namespace Live2D.Cubism.Rendering
 
             ApplySorting();
         }
+        //by gcy 生成小图片的mesh
+        public void ReGenerateMesh()
+        {
+            var drawable = GetComponent<CubismDrawable>();
+            Meshes = null;
+            if (Meshes == null)
+            {
+                Meshes = new Mesh[2];
+            }
 
-        //by gcy
+            float xRadio = 0f;
+            float yRadio = 0f;
+            List<float> listX = new List<float>();
+            List<float> listY = new List<float>();
+            for (int i = 0; i < drawable.VertexUvs.Length; i++)
+            {
+                listX.Add(drawable.VertexUvs[i].x);
+                listY.Add(drawable.VertexUvs[i].y);
+            }
+            var minX = listX.Min();
+            var maxX = listX.Max();
+            var minY = listY.Min();
+            var maxY = listY.Max();
+            //Debug.LogError($"minX:{minX} maxX:{maxX} minY:{minY} maxY:{maxY}");
+            xRadio = maxX - minX;
+            yRadio = maxY - minY;
+            Vector2[] newUVs = new Vector2[drawable.VertexUvs.Length];
+            for (int i = 0; i < drawable.VertexUvs.Length; i++)
+            {
+                float x = (drawable.VertexUvs[i].x - minX) / xRadio;
+                float y = (drawable.VertexUvs[i].y - minY) / yRadio;
+                //Debug.LogError($"x:{x} y:{y}");
+                newUVs[i] = new Vector2(x, y);
+            }
+
+            for (var i = 0; i < 2; ++i)
+            {
+                var mesh = new Mesh
+                {
+                    name = drawable.name,
+                    vertices = drawable.VertexPositions,
+                    uv = newUVs,
+                    triangles = drawable.Indices
+                };
+
+
+                mesh.MarkDynamic();
+                mesh.RecalculateBounds();
+
+
+                // Store mesh.
+                Meshes[i] = mesh;
+            }
+        }
+        //by gcy 从图集中切图
         private void GenerateTextures(string savePath)
         {
             var drawable = GetComponent<CubismDrawable>();

@@ -21,6 +21,8 @@ public class Live2dSliceAtlas : Editor
             goPrefab.GetComponent<CubismRenderController>().SliceAtlas(savePath);
             Debug.Log($"<color=green>savePath:{savePath} 图片保存成功</color>");
             EditorUtility.ClearProgressBar();
+            AssetDatabase.Refresh();
+            AssetDatabase.SaveAssets();
         }
         catch (System.Exception e)
         {
