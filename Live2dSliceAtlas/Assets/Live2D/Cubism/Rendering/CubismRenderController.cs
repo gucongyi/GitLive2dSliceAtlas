@@ -367,7 +367,7 @@ namespace Live2D.Cubism.Rendering
         /// </summary>
         private bool _hasUpdateController = false;
 
-
+        
         /// <summary>
         /// Makes sure all <see cref="CubismDrawable"/>s have <see cref="CubismRenderer"/>s attached to them.
         /// </summary>
@@ -408,6 +408,44 @@ namespace Live2D.Cubism.Rendering
                 .sortingLayerID;
         }
 
+
+        //add by gcy
+        public void SliceAtlas(string savePath)
+        {
+            // Try get renderers.
+            var renderers = Renderers;
+
+
+            // Create renderers if necesssary.
+            if (renderers == null || renderers.Length == 0)
+            {
+                // Create renders and apply it to backing field...
+                var drawables = this
+                .FindCubismModel()
+                .Drawables;
+
+
+                renderers = drawables.AddComponentEach<CubismRenderer>();
+
+                // Store renderers.
+                Renderers = renderers;
+
+            }
+
+
+            // Make sure renderers are initialized.
+            for (var i = 0; i < renderers.Length; ++i)
+            {
+                renderers[i].TryInitializeAndSlice(savePath);
+            }
+
+
+            // Initialize sorting layer.
+            // We set the backing field here directly because we pull the sorting layer directly from the renderer.
+            _sortingLayerId = renderers[0]
+                .MeshRenderer
+                .sortingLayerID;
+        }
 
         /// <summary>
         /// Updates opacity if necessary.

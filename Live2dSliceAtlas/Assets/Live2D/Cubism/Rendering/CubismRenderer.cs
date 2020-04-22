@@ -9,6 +9,9 @@
 using Live2D.Cubism.Core;
 using Live2D.Cubism.Rendering.Masking;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -761,6 +764,97 @@ namespace Live2D.Cubism.Rendering
 
 
             ApplySorting();
+        }
+
+        //by gcy
+        public void TryInitializeAndSlice(string savePath)
+        {
+            TryInitializeMeshRenderer();
+            TryInitializeMeshFilter();
+
+            GenerateTextures(savePath);
+            TryInitializeVertexColor();
+            TryInitializeMainTexture();
+
+
+            ApplySorting();
+        }
+
+        //by gcy
+        private void GenerateTextures(string savePath)
+        {
+            var drawable = GetComponent<CubismDrawable>();
+            Meshes = null;
+            if (Meshes == null)
+            {
+                Meshes = new Mesh[2];
+            }
+
+            float xRadio = 0f;
+            float yRadio = 0f;
+            List<float> listX = new List<float>();
+            List<float> listY = new List<float>();
+            for (int i = 0; i < drawable.VertexUvs.Length; i++)
+            {
+                listX.Add(drawable.VertexUvs[i].x);
+                listY.Add(drawable.VertexUvs[i].y);
+            }
+            var minX = listX.Min();
+            var maxX = listX.Max();
+            var minY = listY.Min();
+            var maxY = listY.Max();
+            //Debug.LogError($"minX:{minX} maxX:{maxX} minY:{minY} maxY:{maxY}");
+            xRadio = maxX - minX;
+            yRadio = maxY - minY;
+            Vector2[] newUVs = new Vector2[drawable.VertexUvs.Length];
+            for (int i = 0; i < drawable.VertexUvs.Length; i++)
+            {
+                float x = (drawable.VertexUvs[i].x - minX) / xRadio;
+                float y = (drawable.VertexUvs[i].y - minY) / yRadio;
+                //Debug.LogError($"x:{x} y:{y}");
+                newUVs[i] = new Vector2(x, y);
+            }
+            //生成贴图
+            var renderer = GetComponent<CubismRenderer>();
+            Texture2D altas = renderer.MainTexture;
+            int newWidth = Mathf.RoundToInt(2048 * xRadio);
+            int newHeight = Mathf.RoundToInt(2048 * yRadio);
+            int beginX = Mathf.RoundToInt(2048 * minX);
+            int beginY = Mathf.RoundToInt(2048 * minY);
+            if (beginX + newWidth > 2048)
+            {
+                newWidth = 2048 - beginX;
+            }
+            if (beginY+ newHeight>2048)
+            {
+                newHeight = 2048 - beginY;
+            }
+            Texture2D newTexture = new Texture2D(newWidth, newHeight);
+            Color[] colors = altas.GetPixels(beginX, beginY, newWidth, newHeight);
+            newTexture.SetPixels(colors);
+            var pngData = newTexture.EncodeToPNG();
+
+            savePath = Path.Combine(savePath, drawable.name + ".png");
+            File.WriteAllBytes(savePath, pngData);
+
+            for (var i = 0; i < 2; ++i)
+            {
+                var mesh = new Mesh
+                {
+                    name = drawable.name,
+                    vertices = drawable.VertexPositions,
+                    uv = drawable.VertexUvs,
+                    triangles = drawable.Indices
+                };
+
+
+                mesh.MarkDynamic();
+                mesh.RecalculateBounds();
+
+
+                // Store mesh.
+                Meshes[i] = mesh;
+            }
         }
 
         #region Swap Info

@@ -1,2 +1,5 @@
 /Live2dSliceAtlas/Library/
 /Live2dSliceAtlas/Temp/
+/Live2dSliceAtlas/.vs/
+/Live2dSliceAtlas/obj/
+*.csproj
