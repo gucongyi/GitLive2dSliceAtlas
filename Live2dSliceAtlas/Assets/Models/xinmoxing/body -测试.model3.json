@@ -1,0 +1,33 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "body -测试.moc3",
+		"Textures": [
+			"body -测试.2048/texture_00.png",
+			"body -测试.2048/texture_01.png",
+			"body -测试.2048/texture_02.png",
+			"body -测试.2048/texture_03.png",
+			"body -测试.2048/texture_04.png"
+		],
+		"Physics": "body -测试.physics3.json",
+		"DisplayInfo": "body -测试.cdi3.json"
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": [
+				"ParamMouthForm",
+				"ParamMouthOpenY"
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": [
+				"ParamEyeLOpen",
+				"ParamEyeROpen"
+			]
+		}
+	]
+}

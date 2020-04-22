@@ -1,0 +1,323 @@
+{
+	"Version": 3,
+	"Parameters": [
+		{
+			"Id": "ParamAngleX",
+			"GroupId": "",
+			"Name": "角度 X"
+		},
+		{
+			"Id": "ParamAngleY",
+			"GroupId": "",
+			"Name": "角度 Y"
+		},
+		{
+			"Id": "ParamAngleZ",
+			"GroupId": "",
+			"Name": "角度 Z"
+		},
+		{
+			"Id": "ParamEyeLOpen",
+			"GroupId": "",
+			"Name": "左眼　开闭"
+		},
+		{
+			"Id": "ParamEyeROpen",
+			"GroupId": "",
+			"Name": "右眼"
+		},
+		{
+			"Id": "ParamEyeBallX",
+			"GroupId": "",
+			"Name": "眼球 X"
+		},
+		{
+			"Id": "ParamEyeBallY",
+			"GroupId": "",
+			"Name": "眼球 Y"
+		},
+		{
+			"Id": "ParamBrowLY",
+			"GroupId": "",
+			"Name": "左眉上下"
+		},
+		{
+			"Id": "ParamBrowRY",
+			"GroupId": "",
+			"Name": "右眉　上下"
+		},
+		{
+			"Id": "ParamBrowLAngle",
+			"GroupId": "",
+			"Name": "左眉　角度"
+		},
+		{
+			"Id": "ParamBrowRAngle",
+			"GroupId": "",
+			"Name": "右眉　角度"
+		},
+		{
+			"Id": "ParamBrowLForm",
+			"GroupId": "",
+			"Name": "左眉　変形"
+		},
+		{
+			"Id": "ParamBrowRForm",
+			"GroupId": "",
+			"Name": "右眉　変形"
+		},
+		{
+			"Id": "ParamMouthForm",
+			"GroupId": "",
+			"Name": "嘴部　变形"
+		},
+		{
+			"Id": "ParamMouthOpenY",
+			"GroupId": "",
+			"Name": "嘴巴　张开和闭合"
+		},
+		{
+			"Id": "ParamBodyAngleX",
+			"GroupId": "",
+			"Name": "身体旋转　X"
+		},
+		{
+			"Id": "ParamBodyAngleY",
+			"GroupId": "",
+			"Name": "身体旋转　Y"
+		},
+		{
+			"Id": "ParamBodyAngleZ",
+			"GroupId": "",
+			"Name": "身体旋转　Z"
+		},
+		{
+			"Id": "ParamBreath",
+			"GroupId": "",
+			"Name": "呼吸"
+		},
+		{
+			"Id": "ParamHairFront",
+			"GroupId": "",
+			"Name": "摇动　前发"
+		},
+		{
+			"Id": "ParamHairSide",
+			"GroupId": "",
+			"Name": "摇动　侧发"
+		},
+		{
+			"Id": "ParamHairBack",
+			"GroupId": "",
+			"Name": "摇动　后发"
+		},
+		{
+			"Id": "ParamClothL",
+			"GroupId": "",
+			"Name": "袖子 左 旋转"
+		},
+		{
+			"Id": "ParamArm1L",
+			"GroupId": "",
+			"Name": "上臂 左 旋转"
+		},
+		{
+			"Id": "ParamArm2L",
+			"GroupId": "",
+			"Name": "小臂 左 旋转"
+		},
+		{
+			"Id": "ParamHandL",
+			"GroupId": "",
+			"Name": "手 左 旋转"
+		},
+		{
+			"Id": "ParamClothR",
+			"GroupId": "",
+			"Name": "袖子 右 旋转"
+		},
+		{
+			"Id": "ParamArm1R",
+			"GroupId": "",
+			"Name": "上臂 右 旋转"
+		},
+		{
+			"Id": "ParamArm2R",
+			"GroupId": "",
+			"Name": "小臂 右 旋转"
+		},
+		{
+			"Id": "ParamHandR",
+			"GroupId": "",
+			"Name": "手 右 旋转"
+		},
+		{
+			"Id": "ParamLeg1R",
+			"GroupId": "",
+			"Name": "大腿 右"
+		},
+		{
+			"Id": "ParamLeg2R",
+			"GroupId": "",
+			"Name": "小腿 右"
+		},
+		{
+			"Id": "ParamFeetR",
+			"GroupId": "",
+			"Name": "脚 右"
+		},
+		{
+			"Id": "ParamLeg1L",
+			"GroupId": "",
+			"Name": "大腿 左"
+		},
+		{
+			"Id": "ParamLeg2L",
+			"GroupId": "",
+			"Name": "小腿 左"
+		},
+		{
+			"Id": "ParamFeetL",
+			"GroupId": "",
+			"Name": "脚 左"
+		},
+		{
+			"Id": "Param",
+			"GroupId": "",
+			"Name": "衣服左"
+		},
+		{
+			"Id": "Param2",
+			"GroupId": "",
+			"Name": "衣服右"
+		},
+		{
+			"Id": "ParamB",
+			"GroupId": "",
+			"Name": "包包"
+		}
+	],
+	"ParameterGroups": [],
+	"Parts": [
+		{
+			"Id": "Part28",
+			"Name": "人物"
+		},
+		{
+			"Id": "Part33",
+			"Name": "头发"
+		},
+		{
+			"Id": "Part19",
+			"Name": "套装"
+		},
+		{
+			"Id": "Part15",
+			"Name": "女主素体"
+		},
+		{
+			"Id": "Part32",
+			"Name": "素体头发"
+		},
+		{
+			"Id": "Part47",
+			"Name": "星星毛衣"
+		},
+		{
+			"Id": "Part22",
+			"Name": "红裙子"
+		},
+		{
+			"Id": "Part20",
+			"Name": "睡衣"
+		},
+		{
+			"Id": "Part56",
+			"Name": "绿裙子"
+		},
+		{
+			"Id": "Part16",
+			"Name": "线稿备份"
+		},
+		{
+			"Id": "Part",
+			"Name": "女主家居服拖鞋"
+		},
+		{
+			"Id": "Part3",
+			"Name": "头发变形器"
+		},
+		{
+			"Id": "Part48",
+			"Name": "星星毛衣-裤子"
+		},
+		{
+			"Id": "Part49",
+			"Name": "星星毛衣-上衣"
+		},
+		{
+			"Id": "Part12",
+			"Name": "红裙子-上衣"
+		},
+		{
+			"Id": "Part13",
+			"Name": "红裙子-项链"
+		},
+		{
+			"Id": "Part17",
+			"Name": "红裙子-鞋子"
+		},
+		{
+			"Id": "Part4",
+			"Name": "脸"
+		},
+		{
+			"Id": "Part26",
+			"Name": "右腿"
+		},
+		{
+			"Id": "Part27",
+			"Name": "左腿"
+		},
+		{
+			"Id": "Part24",
+			"Name": "左手"
+		},
+		{
+			"Id": "Part25",
+			"Name": "右手"
+		},
+		{
+			"Id": "Part2",
+			"Name": "线稿备份"
+		},
+		{
+			"Id": "Part5",
+			"Name": "嘴巴"
+		},
+		{
+			"Id": "Part6",
+			"Name": "眼睛左"
+		},
+		{
+			"Id": "Part7",
+			"Name": "眼睛右"
+		},
+		{
+			"Id": "Part8",
+			"Name": "左手"
+		},
+		{
+			"Id": "Part9",
+			"Name": "右手"
+		},
+		{
+			"Id": "Part10",
+			"Name": "右腿"
+		},
+		{
+			"Id": "Part11",
+			"Name": "左腿"
+		}
+	]
+}
